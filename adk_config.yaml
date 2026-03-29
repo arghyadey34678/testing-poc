@@ -1,0 +1,39 @@
+# ADK Configuration for Agent Engine Deployment
+# Project: np-sc-inventory-execution
+
+app_name: "pom_agent_v2.0"
+model: "gemini-1.5-pro"
+
+# Google Cloud Configuration
+google_cloud:
+  project: "np-sc-inventory-execution"
+  location: "us-central1"
+  service_account: "ai-pom-po@np-sc-inventory-execution.iam.gserviceaccount.com"
+
+# Agent Configuration
+agent:
+  name: "POM Testing AI Agent V2"
+  description: "AI agent for PO creation with 8 PO types (BDC/RDC/RDCX/IFC/DFC Domestic, DFC/TLD/SDC Import) and intelligent validation"
+  instructions: |
+    You are a Purchase Order Management System Agent that helps users create and update purchase orders
+    using natural language instructions. You support 8 PO types and validate that users provide both
+    location type and classification before proceeding.
+
+# RAG Configuration
+rag_configuration:
+  rag_corpus: "projects/np-sc-inventory-execution/locations/us-east1/ragCorpora/6917529027641081856"
+
+# Memory Bank Configuration
+memory_bank:
+  enabled: true
+
+# Deployment Configuration
+deployment:
+  min_instances: 1
+  max_instances: 10
+  memory: "4Gi"
+  cpu: 4
+  timeout: 300
+  concurrency: 10
+  service_account: "ai-pom-po@np-sc-inventory-execution.iam.gserviceaccount.com"
+  
